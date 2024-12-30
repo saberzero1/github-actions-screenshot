@@ -16,6 +16,7 @@ const INPUT_WAIT_FOR_TIMEOUT = parseInt(process.env.INPUT_WAIT_FOR_TIMEOUT, 10) 
 const INPUT_FULL_PAGE = process.env.INPUT_FULL_PAGE == 'true';
 const INPUT_OMIT_BACKGROUND = process.env.INPUT_OMIT_BACKGROUND == 'true';
 const INPUT_CONSOLE_OUTPUT_ENABLED = ( process.env.INPUT_CONSOLE_OUTPUT_ENABLED !== undefined && process.env.INPUT_CONSOLE_OUTPUT_ENABLED == 'true') || true;
+const INPUT_THEME = process.env.INPUT_THEME || 'light';
 
 async function readYamlFile(filePath) {
   try {
@@ -35,6 +36,11 @@ async function readYamlFile(filePath) {
   const browser = await puppeteer.launch({headless: 'new', dumpio: false});
   const page = await browser.newPage();
   await page.setViewport({ width: INPUT_VIEWPORT_WIDTH, height: INPUT_VIEWPORT_HEIGHT, deviceScaleFactor: INPUT_DEVICE_SCALE_FACTOR });
+
+  // Set light/dark theme
+  await page.emulateMediaFeatures([{
+    name: 'prefers-color-scheme', value: INPUT_THEME
+  }]);
 
   if (INPUT_CONSOLE_OUTPUT_ENABLED) {
     const { blue, cyan, green, magenta, red, yellow } = require('colorette')
