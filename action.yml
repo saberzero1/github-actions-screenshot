@@ -98,6 +98,7 @@ runs:
         INPUT_DEVICE_SCALE_FACTOR=${{ inputs.deviceScaleFactor }}
         INPUT_FULL_PAGE=${{ inputs.fullPage }}
         INPUT_WAIT_FOR_TIMEOUT=${{ inputs.waitForTimeout }}
+        INPUT_THEME=${{ inputs.theme }}
         __EOF__
         cat docker.env
 
