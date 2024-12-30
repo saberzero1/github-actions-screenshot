@@ -11,6 +11,9 @@ inputs:
   css:
     description: 'Custom CSS overrides'
     required: false
+  theme:
+    description: 'Dark/Light mode'
+    default: 'light'
   customizations:
     description: 'String representation of a YAML or JSON map of CSS paths (key) and replacement (value)'
     required: false
