@@ -114,7 +114,7 @@ runs:
       uses: addnab/docker-run-action@v3
       with:
         image: "${{ inputs.puppeteerImage }}"
-        name: puppeteer-chrome
+        # name: puppeteer-chrome
         # No quotes around ${{ env.DOCKER_VOLUMES }} because it is a list of arguments
         options: '-i --init --cap-add=SYS_ADMIN ${{ env.DOCKER_VOLUMES }} --workdir="${{github.action_path}}" --env-file docker.env'
         shell: bash
